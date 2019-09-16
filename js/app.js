@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
 const deck = document.querySelector('.deck');
-
+let toggledCards = [];
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -38,12 +38,17 @@ function shuffle(array) {
  */
 deck.addEventListener('click', event => {
     const clickTarget = event.target; 
-    if (clickTarget.classList.contains('card')) {
-       showCard(clickTarget); 
+    if (clickTarget.classList.contains('card') && toggledCards.length > 2) {
+       showCard(clickTarget);
+       addToggledCards(clickTarget); 
     }
 });
 
 function showCard(clickTarget) {
     clickTarget.classList.toggle('open');
     clickTarget.classList.toggle('show');
+}
+
+function addToggledCards(clickTarget) {
+    toggledCards.push(clickTarget);
 }
