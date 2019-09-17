@@ -62,8 +62,10 @@ function checkForMatch() {
         toggledCards[1].classList.toggle('match');
         toggledCards = [];
     } else {
-        showCard(toggledCards[0]);
-        showCard(toggledCards[1]);
-        toggledCards = [];
+        setTimeout(() => {
+            showCard(toggledCards[0]);
+            showCard(toggledCards[1]);
+            toggledCards = [];
+        }, 1000);    
     }
 }
