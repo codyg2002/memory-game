@@ -72,6 +72,15 @@ function checkForMatch() {
 
 function isClickValid(clickTarget) {
     return (
-        clickTarget.classList.contains('card') && toggledCards.length < 2 && !toggledCards.includes(clickTarget) && !toggledCards('match')
+        clickTarget.classList.contains('card') && toggledCards.length < 2 && !toggledCards.includes(clickTarget) && !toggledCards.includes('match')
     );
 }
+
+function shuffleCards() {
+    const unshuffled = Array.from(document.querySelectorAll('.deck li'));
+    const shuffled = shuffle(unshuffled);
+    for (card of shuffled) {
+        deck.appendChild(card);
+    }
+}
+shuffleCards();
