@@ -38,9 +38,12 @@ function shuffle(array) {
  */
 deck.addEventListener('click', event => {
     const clickTarget = event.target; 
-    if (clickTarget.classList.contains('card') && toggledCards.length > 2) {
-       showCard(clickTarget);
-       addToggledCards(clickTarget); 
+    if (clickTarget.classList.contains('card') && toggledCards.length < 2) {
+        showCard(clickTarget);
+        addToggledCards(clickTarget);
+        if (toggledCards.length === 2) {
+            checkForMatch();    
+       }
     }
 });
 
@@ -51,4 +54,16 @@ function showCard(clickTarget) {
 
 function addToggledCards(clickTarget) {
     toggledCards.push(clickTarget);
+}
+
+function checkForMatch() {
+    if (toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className ) {
+        toggledCards[0].classList.toggle('match');
+        toggledCards[1].classList.toggle('match');
+        toggledCards = [];
+    } else {
+        showCard(toggledCards[0]);
+        showCard(toggledCards[1]);
+        toggledCards = [];
+    }
 }
