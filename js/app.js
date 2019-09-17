@@ -38,7 +38,7 @@ function shuffle(array) {
  */
 deck.addEventListener('click', event => {
     const clickTarget = event.target; 
-    if (clickTarget.classList.contains('card') && toggledCards.length < 2) {
+    if (isClickValid(clickTarget)) {
         showCard(clickTarget);
         addToggledCards(clickTarget);
         if (toggledCards.length === 2) {
@@ -68,4 +68,10 @@ function checkForMatch() {
             toggledCards = [];
         }, 1000);    
     }
+}
+
+function isClickValid(clickTarget) {
+    return (
+        clickTarget.classList.contains('card') && toggledCards.length < 2 && !toggledCards.includes(clickTarget) && !toggledCards('match')
+    );
 }
