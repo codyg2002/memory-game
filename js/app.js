@@ -3,6 +3,8 @@
  */
 const deck = document.querySelector('.deck');
 let toggledCards = [];
+let time = 0;
+let running = 0;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -84,3 +86,14 @@ function shuffleCards() {
     }
 }
 shuffleCards();
+
+function startPause(){
+	if(running == 0){
+		running = 1;
+		increment();
+		document.getElementById("startPause").innerHTML = "Pause";
+	}else{
+		running = 0;
+		document.getElementById("startPause").innerHTML = "Resume";
+	}
+};
