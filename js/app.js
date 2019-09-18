@@ -38,6 +38,8 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+ //The memory game walkthrough by Matthew Cranford was consulted for this section of the project https://matthewcranford.com/category/blog-posts/walkthrough/memory-game/
 deck.addEventListener('click', event => {
     const clickTarget = event.target; 
     if (isClickValid(clickTarget)) {
@@ -48,6 +50,8 @@ deck.addEventListener('click', event => {
        }
     }
 });
+
+deck.addEventListener('click', startPause(), {once: true});
 
 function showCard(clickTarget) {
     clickTarget.classList.toggle('open');
@@ -87,6 +91,7 @@ function shuffleCards() {
 }
 shuffleCards();
 
+//The following 3 functions are from the Stopwatch tutorial from https://learnwebsitedesign.com/tutorials/javascript-stopwatch-code-tutorial.php
 function startPause(){
 	if(running == 0){
 		running = 1;
@@ -99,5 +104,20 @@ function startPause(){
 function reset(){
 	running = 0;
 	time = 0;
-	document.getElementById("output").innerHTML = "00:00:00";
-};
+	document.getElementById("output").innerHTML = "00:00";
+}
+
+function increment(){
+	if(running == 1){
+		setTimeout(function(){
+			time++;
+			let mins = Math.floor(time / 60);
+			let secs = Math.floor(time % 60);
+			if(secs <= 9){
+				secs = "0" + secs;
+			}
+			document.getElementById("output").innerHTML = mins + ":" + secs;
+			increment();
+		}, 1000);
+	}
+}
