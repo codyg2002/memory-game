@@ -6,6 +6,7 @@ let toggledCards = [];
 let time = 0;
 let running = 0;
 let clockIsOff = true;
+let moves = 0;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -51,7 +52,8 @@ deck.addEventListener('click', event => {
         showCard(clickTarget);
         addToggledCards(clickTarget);
         if (toggledCards.length === 2) {
-            checkForMatch();    
+            checkForMatch();
+            addMoves();   
        }
     }
 });
@@ -93,6 +95,12 @@ function shuffleCards() {
     }
 }
 shuffleCards();
+
+function addMoves() {
+    moves++;
+    const moveText = document.querySelector('.moves');
+    moveText.innerHTML = moves;
+}
 
 //The following 3 functions are from the Stopwatch tutorial from https://learnwebsitedesign.com/tutorials/javascript-stopwatch-code-tutorial.php
 function startClock() {
