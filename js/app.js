@@ -5,6 +5,7 @@ const deck = document.querySelector('.deck');
 let toggledCards = [];
 let time = 0;
 let running = 0;
+let clockIsOff = true;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -43,6 +44,10 @@ function shuffle(array) {
 deck.addEventListener('click', event => {
     const clickTarget = event.target; 
     if (isClickValid(clickTarget)) {
+        if (clockIsOff= true) {
+            startClock();
+            clockIsOff = false;
+        }
         showCard(clickTarget);
         addToggledCards(clickTarget);
         if (toggledCards.length === 2) {
@@ -50,8 +55,6 @@ deck.addEventListener('click', event => {
        }
     }
 });
-
-deck.addEventListener('click', startPause(), {once: true});
 
 function showCard(clickTarget) {
     clickTarget.classList.toggle('open');
@@ -92,13 +95,17 @@ function shuffleCards() {
 shuffleCards();
 
 //The following 3 functions are from the Stopwatch tutorial from https://learnwebsitedesign.com/tutorials/javascript-stopwatch-code-tutorial.php
-function startPause(){
-	if(running == 0){
+function startClock() {
+	if(running == 0) {
 		running = 1;
 		increment();
-	}else{
-		running = 0;
 	}
+}
+
+function stopClock() {
+    if(running == 1) {
+        running = 0;
+    }
 }
 
 function reset(){
@@ -107,9 +114,9 @@ function reset(){
 	document.getElementById("output").innerHTML = "00:00";
 }
 
-function increment(){
-	if(running == 1){
-		setTimeout(function(){
+function increment() {
+	if(running == 1) {
+		setTimeout(function() {
 			time++;
 			let mins = Math.floor(time / 60);
 			let secs = Math.floor(time % 60);
