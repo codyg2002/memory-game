@@ -102,6 +102,22 @@ function addMoves() {
     moveText.innerHTML = moves;
 }
 
+function trackScore() {
+    if (moves === 15 || moves === 25) {
+        removeStar();
+    }
+} 
+
+function removeStar() {
+    const stars = document.querySelectorAll('.stars li')
+    for (star of stars) {
+        if (star.style.display !== 'none'){
+            star.style.display = 'none';
+            break;
+        }    
+    }
+}
+
 //The following 3 functions are from the Stopwatch tutorial from https://learnwebsitedesign.com/tutorials/javascript-stopwatch-code-tutorial.php
 function startClock() {
 	if(running == 0) {
