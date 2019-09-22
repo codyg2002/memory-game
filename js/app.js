@@ -53,7 +53,8 @@ deck.addEventListener('click', event => {
         addToggledCards(clickTarget);
         if (toggledCards.length === 2) {
             checkForMatch();
-            addMoves();   
+            addMoves();
+            trackScore();
        }
     }
 });
