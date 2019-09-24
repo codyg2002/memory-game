@@ -111,3 +111,38 @@ h1 {
 .output {
     margin-left: 5px;
 }
+
+/*
+ * Styles for the modal
+ */
+
+.my_modal {
+    display: ;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal_box {
+    display: relative;
+    width: 400px;
+    height: 300px;
+    left: 50%;
+    top: 50%;
+    background-color: #ffffff;
+    transform: translate(138%, 50%);
+}
+
+.modal_heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.modal_header {
+    align-item: center;
+}

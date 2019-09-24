@@ -153,3 +153,6 @@ function increment() {
 		}, 1000);
 	}
 }
+
+// modal for end of game
+
