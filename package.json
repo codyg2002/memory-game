@@ -1,0 +1,22 @@
+{
+  "name": "fend-project-memory-game-master",
+  "version": "1.0.0",
+  "description": "memory-game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codyg2002/memory-game.git"
+  },
+  "author": "Cody Gentry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codyg2002/memory-game/issues"
+  },
+  "homepage": "https://github.com/codyg2002/memory-game#readme",
+  "devDependencies": {
+    "eslint": "^6.4.0"
+  }
+}
