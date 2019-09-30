@@ -140,7 +140,7 @@ function stopClock() {
 function reset(){
 	running = 0;
 	time = 0;
-	document.getElementById("output").innerHTML = "00:00";
+	document.querySelector(".clock").innerHTML = "00:00";
 }
 
 function increment() {
@@ -152,7 +152,7 @@ function increment() {
 			if(secs <= 9){
 				secs = "0" + secs;
 			}
-			document.getElementById("output").innerHTML = mins + ":" + secs;
+			document.querySelector(".clock").innerHTML = mins + ":" + secs;
 			increment();
 		}, 1000);
 	}
@@ -164,3 +164,13 @@ function toggleModal() {
     modal.classList.toggle("hide");
 }
 
+function getStats () {
+    const timeStat = document.querySelector(".modal_time");
+    const clockTime = document.querySelector(".clock").innerHTML;
+    const moveStat = document.querySelector(".modal_time")
+    const starStat = document.querySelector(".modal_stars");
+
+    timeStat.innerHTML = `Time = ${clocktime}`;
+    moveStat.innerHTML = `Moves = ${moves}`;
+    starStat.innerHTML = `Stars = ${stars}`;
+}
