@@ -117,7 +117,6 @@ h1 {
  */
 
 .my_modal {
-    display: ;
     position: absolute;
     top: 0;
     left: 0;
@@ -129,7 +128,6 @@ h1 {
 .modal_box {
     display: relative;
     width: 400px;
-    height: 300px;
     left: 50%;
     top: 50%;
     background-color: #ffffff;
@@ -148,6 +146,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     padding: 1em;
+    font-weight: 550;
 }
 
 .modal_buttons {
@@ -159,4 +158,14 @@ h1 {
 .modal_button {
     cursor: pointer;
     box-shadow: 5px 5px 5px black;
+}
+.modal_close {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 1em;
+}
+
+.hide {
+    display: none;
 }

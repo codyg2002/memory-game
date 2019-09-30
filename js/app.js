@@ -1,12 +1,16 @@
 /*
  * Create a list that holds all of your cards
  */
+
+// Global variables
 const deck = document.querySelector('.deck');
 let toggledCards = [];
 let time = 0;
 let running = 0;
 let clockIsOff = true;
 let moves = 0;
+let stars = 0;
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -43,7 +47,7 @@ function shuffle(array) {
 
  //The memory game walkthrough by Matthew Cranford was consulted for this section of the project https://matthewcranford.com/category/blog-posts/walkthrough/memory-game/
 deck.addEventListener('click', event => {
-    const clickTarget = event.target; 
+    const clickTarget = event.target;
     if (isClickValid(clickTarget)) {
         if (clockIsOff= true) {
             startClock();
@@ -78,7 +82,7 @@ function checkForMatch() {
             showCard(toggledCards[0]);
             showCard(toggledCards[1]);
             toggledCards = [];
-        }, 1000);    
+        }, 1000);
     }
 }
 
@@ -107,7 +111,7 @@ function trackScore() {
     if (moves === 15 || moves === 25) {
         removeStar();
     }
-} 
+}
 
 function removeStar() {
     const stars = document.querySelectorAll('.stars li')
@@ -115,7 +119,7 @@ function removeStar() {
         if (star.style.display !== 'none'){
             star.style.display = 'none';
             break;
-        }    
+        }
     }
 }
 
@@ -155,4 +159,8 @@ function increment() {
 }
 
 // modal for end of game
+function toggleModal() {
+    const modal = document.querySelector(".my_modal");
+    modal.classList.toggle("hide");
+}
 
