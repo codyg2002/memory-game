@@ -9,7 +9,9 @@ let time = 0;
 let running = 0;
 let clockIsOff = true;
 let moves = 0;
-let stars = 0;
+let stars = 3;
+let matchedPairs = 0;
+const totalPairs = 8;
 
 /*
  * Display the cards on the page
@@ -49,7 +51,7 @@ function shuffle(array) {
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
     if (isClickValid(clickTarget)) {
-        if (clockIsOff= true) {
+        if (clockIsOff = true) {
             startClock();
             clockIsOff = false;
         }
@@ -60,7 +62,15 @@ deck.addEventListener('click', event => {
             addMoves();
             trackScore();
        }
+       if (matchedPairs === totalPairs) {
+           gameOver();
+       }
     }
+});
+
+const replayButton = document.getElementsByClassName('modal_replay');
+replayButton.addEventListener('click', ()=> {
+    replay();
 });
 
 function showCard(clickTarget) {
@@ -77,6 +87,7 @@ function checkForMatch() {
         toggledCards[0].classList.toggle('match');
         toggledCards[1].classList.toggle('match');
         toggledCards = [];
+        matchedPairs++;
     } else {
         setTimeout(() => {
             showCard(toggledCards[0]);
@@ -114,10 +125,11 @@ function trackScore() {
 }
 
 function removeStar() {
-    const stars = document.querySelectorAll('.stars li')
+    let stars = document.querySelectorAll('.stars li')
     for (star of stars) {
         if (star.style.display !== 'none'){
             star.style.display = 'none';
+            stars--;
             break;
         }
     }
@@ -167,10 +179,31 @@ function toggleModal() {
 function getStats () {
     const timeStat = document.querySelector(".modal_time");
     const clockTime = document.querySelector(".clock").innerHTML;
-    const moveStat = document.querySelector(".modal_time")
+    const moveStat = document.querySelector(".modal_moves")
     const starStat = document.querySelector(".modal_stars");
 
-    timeStat.innerHTML = `Time = ${clocktime}`;
+    timeStat.innerHTML = `Time = ${clockTime}`;
     moveStat.innerHTML = `Moves = ${moves}`;
     starStat.innerHTML = `Stars = ${stars}`;
+}
+
+function gameOver() {
+    stopClock();
+    getStats();
+    toggleModal();
+}
+
+function replay() {
+    toggleModal();
+    reset();
+    let matchedPairs = 0;
+    let moves = 0;
+    resetCards();
+    shuffle();
+}
+
+function resetCards(){
+    const cards = querySelector('.cards');
+    cards.classList.toggle('open');
+    cards.classList.toggle('show');
 }
