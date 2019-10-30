@@ -68,8 +68,7 @@ deck.addEventListener('click', event => {
     }
 });
 
-const replayButton = document.getElementsByClassName('modal_replay');
-replayButton.addEventListener('click', ()=> {
+document.getElementsByClassName('modal_replay')[0].addEventListener('click', ()=> {
     replay();
 });
 
@@ -176,12 +175,11 @@ function toggleModal() {
     modal.classList.toggle("hide");
 }
 
-function getStats () {
+function getStats() {
     const timeStat = document.querySelector(".modal_time");
     const clockTime = document.querySelector(".clock").innerHTML;
-    const moveStat = document.querySelector(".modal_moves")
+    const moveStat = document.querySelector(".modal_moves");
     const starStat = document.querySelector(".modal_stars");
-
     timeStat.innerHTML = `Time = ${clockTime}`;
     moveStat.innerHTML = `Moves = ${moves}`;
     starStat.innerHTML = `Stars = ${stars}`;
@@ -194,16 +192,18 @@ function gameOver() {
 }
 
 function replay() {
-    toggleModal();
     reset();
-    let matchedPairs = 0;
-    let moves = 0;
     resetCards();
-    shuffle();
+    shuffleCards();
+    toggleModal();
 }
 
-function resetCards(){
-    const cards = querySelector('.cards');
-    cards.classList.toggle('open');
-    cards.classList.toggle('show');
+function resetCards() {
+    const cards = document.querySelectorAll('.card');
+    for (card of cards) {
+        cards.classList.toggle('open');
+        cards.classList.toggle('show');
+        cards.classList.toggle('match');
+
+    }
 }
