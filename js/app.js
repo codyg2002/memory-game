@@ -9,7 +9,7 @@ let time = 0;
 let running = 0;
 let clockIsOff = true;
 let moves = 0;
-let stars = 3;
+let stars = 0;
 let matchedPairs = 0;
 const totalPairs = 8;
 
@@ -51,7 +51,7 @@ function shuffle(array) {
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
     if (isClickValid(clickTarget)) {
-        if (clockIsOff = true) {
+        if (clockIsOff === true) {
             startClock();
             clockIsOff = false;
         }
@@ -134,7 +134,7 @@ function removeStar() {
     }
 }
 
-//The following 3 functions are from the Stopwatch tutorial from https://learnwebsitedesign.com/tutorials/javascript-stopwatch-code-tutorial.php
+//The following 4 functions are based on the Stopwatch tutorial from https://learnwebsitedesign.com/tutorials/javascript-stopwatch-code-tutorial.php
 function startClock() {
 	if(running == 0) {
 		running = 1;
@@ -149,6 +149,8 @@ function stopClock() {
 }
 
 function reset(){
+    moves = 0;
+    stars = 3;
 	running = 0;
 	time = 0;
 	document.querySelector(".clock").innerHTML = "00:00";
@@ -185,6 +187,10 @@ function getStats() {
     starStat.innerHTML = `Stars = ${stars}`;
 }
 
+function getStars() {
+
+}
+
 function gameOver() {
     stopClock();
     getStats();
@@ -199,11 +205,20 @@ function replay() {
 }
 
 function resetCards() {
-    const cards = document.querySelectorAll('.card');
-    for (card of cards) {
-        cards.classList.toggle('open');
-        cards.classList.toggle('show');
-        cards.classList.toggle('match');
+    const cards = Array.from(document.querySelectorAll('.card'));
+    for (const card of cards) {
+        card.classList.toggle('open');
+        card.classList.toggle('show');
+        card.classList.toggle('match');
 
+    }
+}
+
+function resetStars() {
+    const stars = Array.from(document.querySelectorAll('.stars li'));
+    for (const star of stars) {
+        if (star.style.display === none) {
+            star.style.display = inline-block;
+        }
     }
 }
