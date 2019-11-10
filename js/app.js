@@ -200,6 +200,7 @@ function gameOver() {
 function replay() {
     reset();
     resetCards();
+    resetStars();
     shuffleCards();
     toggleModal();
 }
@@ -217,8 +218,8 @@ function resetCards() {
 function resetStars() {
     const stars = Array.from(document.querySelectorAll('.stars li'));
     for (const star of stars) {
-        if (star.style.display === none) {
-            star.style.display = inline-block;
+        if (star.style.display == 'none') {
+            star.style.display = 'inline-block';
         }
     }
 }
