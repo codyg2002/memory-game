@@ -150,7 +150,6 @@ function stopClock() {
 
 function reset(){
     moves = 0;
-    stars = 3;
 	running = 0;
 	time = 0;
 	document.querySelector(".clock").innerHTML = "00:00";
@@ -182,13 +181,19 @@ function getStats() {
     const clockTime = document.querySelector(".clock").innerHTML;
     const moveStat = document.querySelector(".modal_moves");
     const starStat = document.querySelector(".modal_stars");
+    getStars();
     timeStat.innerHTML = `Time = ${clockTime}`;
     moveStat.innerHTML = `Moves = ${moves}`;
     starStat.innerHTML = `Stars = ${stars}`;
 }
 
 function getStars() {
-
+    let stars = document.querySelectorAll('.stars li')
+    for (let star of stars) {
+        if (star.style.display !== 'none') {
+            stars ++;
+        }
+    }
 }
 
 function gameOver() {
