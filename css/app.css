@@ -159,12 +159,6 @@ h1 {
     cursor: pointer;
     box-shadow: 5px 5px 5px black;
 }
-.modal_close {
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 2em;
-    padding: 1em;
-}
 
 .hide {
     display: none;

@@ -9,7 +9,7 @@ let time = 0;
 let running = 0;
 let clockIsOff = true;
 let moves = 0;
-let stars = 0;
+let stars = 3;
 let matchedPairs = 0;
 const totalPairs = 8;
 
@@ -72,6 +72,10 @@ document.getElementsByClassName('modal_replay')[0].addEventListener('click', ()=
     replay();
 });
 
+document.getElementsByClassName('modal_cancel')[0].addEventListener('click', ()=> {
+    toggleModal();
+});
+
 function showCard(clickTarget) {
     clickTarget.classList.toggle('open');
     clickTarget.classList.toggle('show');
@@ -124,8 +128,8 @@ function trackScore() {
 }
 
 function removeStar() {
-    let stars = document.querySelectorAll('.stars li')
-    for (star of stars) {
+    let starsList = document.querySelectorAll('.stars li')
+    for (star of starsList) {
         if (star.style.display !== 'none'){
             star.style.display = 'none';
             stars--;
@@ -149,10 +153,14 @@ function stopClock() {
 }
 
 function reset(){
+    stars = 3;
+    clockIsOff = true;
+    matchedPairs = 0;
     moves = 0;
 	running = 0;
 	time = 0;
-	document.querySelector(".clock").innerHTML = "00:00";
+    document.querySelector(".clock").innerHTML = "00:00";
+    document.querySelector('.moves').innerHTML = '0';
 }
 
 function increment() {
@@ -188,10 +196,11 @@ function getStats() {
 }
 
 function getStars() {
-    let stars = document.querySelectorAll('.stars li')
-    for (let star of stars) {
-        if (star.style.display !== 'none') {
+    let starsList = document.querySelectorAll('.stars li')
+    for (star of starsList) {
+        if (star.style.display === 'inline-block') {
             stars ++;
+            // starsStat.innerHTML = stars;
         }
     }
 }
@@ -200,6 +209,13 @@ function gameOver() {
     stopClock();
     getStats();
     toggleModal();
+}
+
+function repeat() {
+    reset();
+    resetCards();
+    resetStars();
+    shuffleCards();
 }
 
 function replay() {
@@ -212,7 +228,7 @@ function replay() {
 
 function resetCards() {
     const cards = Array.from(document.querySelectorAll('.card'));
-    for (const card of cards) {
+    for (card of cards) {
         card.classList.toggle('open');
         card.classList.toggle('show');
         card.classList.toggle('match');
@@ -222,7 +238,7 @@ function resetCards() {
 
 function resetStars() {
     const stars = Array.from(document.querySelectorAll('.stars li'));
-    for (const star of stars) {
+    for (star of stars) {
         if (star.style.display == 'none') {
             star.style.display = 'inline-block';
         }
