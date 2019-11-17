@@ -76,6 +76,10 @@ document.getElementsByClassName('modal_cancel')[0].addEventListener('click', ()=
     toggleModal();
 });
 
+document.getElementsByClassName('fa fa-repeat')[0].addEventListener('click', ()=> {
+    repeat();
+});
+
 function showCard(clickTarget) {
     clickTarget.classList.toggle('open');
     clickTarget.classList.toggle('show');
@@ -138,7 +142,7 @@ function removeStar() {
     }
 }
 
-//The following 4 functions are based on the Stopwatch tutorial from https://learnwebsitedesign.com/tutorials/javascript-stopwatch-code-tutorial.php
+//The following 3 functions are based on the Stopwatch tutorial from https://learnwebsitedesign.com/tutorials/javascript-stopwatch-code-tutorial.php
 function startClock() {
 	if(running == 0) {
 		running = 1;
@@ -150,17 +154,6 @@ function stopClock() {
     if(running == 1) {
         running = 0;
     }
-}
-
-function reset(){
-    stars = 3;
-    clockIsOff = true;
-    matchedPairs = 0;
-    moves = 0;
-	running = 0;
-	time = 0;
-    document.querySelector(".clock").innerHTML = "00:00";
-    document.querySelector('.moves').innerHTML = '0';
 }
 
 function increment() {
@@ -200,9 +193,19 @@ function getStars() {
     for (star of starsList) {
         if (star.style.display === 'inline-block') {
             stars ++;
-            // starsStat.innerHTML = stars;
         }
     }
+}
+
+function reset() {
+    stars = 3;
+    clockIsOff = true;
+    matchedPairs = 0;
+    moves = 0;
+	running = 0;
+	time = 0;
+    document.querySelector(".clock").innerHTML = "00:00";
+    document.querySelector('.moves').innerHTML = '0';
 }
 
 function gameOver() {
@@ -213,7 +216,7 @@ function gameOver() {
 
 function repeat() {
     reset();
-    resetCards();
+    repeatReset();
     resetStars();
     shuffleCards();
 }
@@ -232,14 +235,24 @@ function resetCards() {
         card.classList.toggle('open');
         card.classList.toggle('show');
         card.classList.toggle('match');
+    }
+}
 
+function repeatReset() {
+    let cards = document.querySelectorAll('.card');
+    for (card of cards) {
+        if (card.className === 'open') {
+            card.classList.toggle('open');
+            card.classList.toggle('show');
+            card.classList.toggle('match');
+        }
     }
 }
 
 function resetStars() {
     const stars = Array.from(document.querySelectorAll('.stars li'));
     for (star of stars) {
-        if (star.style.display == 'none') {
+        if (star.style.display === 'none') {
             star.style.display = 'inline-block';
         }
     }
