@@ -12,6 +12,7 @@ let moves = 0;
 let stars = 3;
 let matchedPairs = 0;
 const totalPairs = 8;
+let cardsFlipped = 0;
 
 /*
  * Display the cards on the page
@@ -76,13 +77,13 @@ document.getElementsByClassName('modal_cancel')[0].addEventListener('click', ()=
     toggleModal();
 });
 
-document.getElementsByClassName('fa fa-repeat')[0].addEventListener('click', ()=> {
+document.getElementsByClassName('restart')[0].addEventListener('click', ()=> {
     repeat();
 });
 
-function showCard(clickTarget) {
-    clickTarget.classList.toggle('open');
-    clickTarget.classList.toggle('show');
+function showCard(card) {
+    card.classList.toggle('open');
+    card.classList.toggle('show');
 }
 
 function addToggledCards(clickTarget) {
@@ -203,7 +204,8 @@ function reset() {
     matchedPairs = 0;
     moves = 0;
 	running = 0;
-	time = 0;
+    time = 0;
+    cardsFlipped = 0;
     document.querySelector(".clock").innerHTML = "00:00";
     document.querySelector('.moves').innerHTML = '0';
 }
@@ -216,7 +218,7 @@ function gameOver() {
 
 function repeat() {
     reset();
-    repeatReset();
+    resetCards();
     resetStars();
     shuffleCards();
 }
@@ -232,20 +234,7 @@ function replay() {
 function resetCards() {
     const cards = Array.from(document.querySelectorAll('.card'));
     for (card of cards) {
-        card.classList.toggle('open');
-        card.classList.toggle('show');
-        card.classList.toggle('match');
-    }
-}
-
-function repeatReset() {
-    let cards = document.querySelectorAll('.card');
-    for (card of cards) {
-        if (card.className === 'open') {
-            card.classList.toggle('open');
-            card.classList.toggle('show');
-            card.classList.toggle('match');
-        }
+        card.className = 'card';
     }
 }
 
