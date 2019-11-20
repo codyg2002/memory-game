@@ -152,27 +152,26 @@ function startClock() {
     }
 }
 
-function increment(){
-	if(running === 1){
-		setTimeout(function(){
+function stopClock() {
+    if (running === 1) {
+        running = 0;
+    }
+}
+
+function increment() {
+	if (running === 1) {
+		setTimeout(() => {
 			time++;
-			var mins = Math.floor(time / 10 / 60);
-			if(mins <= 9){
-				mins = "0" + mins;
-			}
-			var secs = Math.floor(time / 10);
+			let mins = Math.floor(time / 60);
+			let secs = Math.floor(time % 60);
 			if(secs <= 9){
 				secs = "0" + secs;
 			}
-			var tenths = Math.floor(time % 10);
-			if(tenths <= 9){
-				tenths = "0" + tenths;
-			}
 			document.querySelector(".clock").innerHTML = mins + ":" + secs;
-			increment();
-		}, 100);
+            increment();
+        }, 1000);
 	}
-};
+}
 
 // modal for end of game
 function toggleModal() {
@@ -192,7 +191,7 @@ function getStats() {
 }
 
 function getStars() {
-    let starsList = document.querySelectorAll('.stars li');
+    let starsList = document.querySelectorAll('.stars li')
     for (star of starsList) {
         if (star.style.display === 'inline-block') {
             stars ++;
@@ -212,7 +211,7 @@ function reset() {
 }
 
 function gameOver() {
-    startClock();
+    stopClock();
     getStats();
     toggleModal();
 }
