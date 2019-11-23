@@ -142,7 +142,7 @@ function removeStar() {
     }
 }
 
-//The following 3 functions are based on the Stopwatch tutorial from https://learnwebsitedesign.com/tutorials/javascript-stopwatch-code-tutorial.php
+//The following 2 functions are based on the Stopwatch tutorial from https://learnwebsitedesign.com/tutorials/javascript-stopwatch-code-tutorial.php
 function startClock() {
     if (running === 0) {
 	    running = 1;
