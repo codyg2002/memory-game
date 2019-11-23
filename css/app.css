@@ -126,7 +126,6 @@ h1 {
 }
 
 .modal_box {
-    display: relative;
     width: 400px;
     left: 50%;
     top: 50%;
@@ -146,7 +145,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     padding: 1em;
-    font-weight: 550;
+    font-weight: 500;
 }
 
 .modal_buttons {
