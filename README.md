@@ -39,6 +39,6 @@ The game begins when the first card is clicked. A _move_ consists if turning ove
 
 - Font Awesome
 
--Google Fonts
+- Google Fonts
 
 '''
