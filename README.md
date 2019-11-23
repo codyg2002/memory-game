@@ -1,6 +1,5 @@
 # Memory Game Project
 
----
 
 This is a variation of the classic game of memory. It consists of 8 pairs of cards that start face down and randomly shuffled. The game tracks the moves and time as well assigning a number of stars based on how many moves it takes to win the game.
 
@@ -8,13 +7,11 @@ To play the game download it from [github](https://github.com/codyg2002/memory-g
 
 ## Game Play
 
----
 
 The game begins when the first card is clicked. A _move_ consists if turning over two cards. If they are a match they remain face up, if not they turn back over. The game is over when all the matches have been found. When the game ends a _Stats_ screen will appear showing the player their time, moves and stars.
 
 ## Features
 
----
 
 - Timer: A timer starts when the first card is flipped. Try to get the lowest time possible!
 
@@ -24,7 +21,6 @@ The game begins when the first card is clicked. A _move_ consists if turning ove
 
 ## Languages Used
 
----
 
 '''
 CSS
@@ -34,7 +30,6 @@ Javascript
 
 ## Dependencies
 
----
 
 '''
 Font Awesome
