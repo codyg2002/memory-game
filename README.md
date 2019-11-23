@@ -23,15 +23,22 @@ The game begins when the first card is clicked. A _move_ consists if turning ove
 
 
 '''
-CSS
-HTML
-Javascript
+
+- CSS
+
+- HTML
+
+- Javascript
+
 '''
 
 ## Dependencies
 
 
 '''
-Font Awesome
-Google Fonts
+
+- Font Awesome
+
+-Google Fonts
+
 '''
